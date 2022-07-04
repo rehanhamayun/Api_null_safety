@@ -1,7 +1,9 @@
 import 'dart:convert';
 
+import 'package:api_null_safety/Models/favorite_posts.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
+import 'package:provider/provider.dart';
 
 import 'Models/user_model.dart';
 
@@ -24,6 +26,7 @@ class _HomePageState extends State<HomePage> {
     if (response.statusCode == 200) {
       postLists.clear();
       for (Map<String, dynamic> i in data) {
+        // This is the way to assign API calls to the model we create.
         postLists.add(UsersPosts.fromJson(i));
       }
       return postLists;
@@ -35,6 +38,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     // print(postList());
+    final favorite = Provider.of<FavoriteProvider>(context);
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
@@ -85,7 +89,14 @@ class _HomePageState extends State<HomePage> {
                                     'Description\n' +
                                         postLists[index].body.toString(),
                                     style:
-                                        Theme.of(context).textTheme.bodyText1)
+                                        Theme.of(context).textTheme.bodyText1),
+                                ElevatedButton(
+                                  onPressed: () {
+                                    favorite.favoriteItemAdd(
+                                        postLists[index].title.toString());
+                                  },
+                                  child: Text("+"),
+                                ),
                               ],
                             ),
                           ),
@@ -96,6 +107,19 @@ class _HomePageState extends State<HomePage> {
             ),
           )
         ],
+      ),
+      drawer: Drawer(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Expanded(
+              child: ListView.builder(
+                  itemBuilder: (BuildContext context, int index) {
+                return Text("");
+              }),
+            )
+          ],
+        ),
       ),
     );
   }

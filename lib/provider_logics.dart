@@ -9,4 +9,6 @@ class CounterProvider with ChangeNotifier {
     _counter++;
     notifyListeners();
   }
+
+  void addFavorite() {}
 }
