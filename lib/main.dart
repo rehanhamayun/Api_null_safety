@@ -1,4 +1,6 @@
 import 'package:api_null_safety/Models/favorite_posts.dart';
+import 'package:api_null_safety/direct_api_fetch.dart';
+
 import 'package:api_null_safety/homepage.dart';
 import 'package:api_null_safety/provider_logics.dart';
 
@@ -30,7 +32,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: const HomePage(),
+            home: const SecondScreen(),
           );
         },
       ),
