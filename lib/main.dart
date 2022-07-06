@@ -1,7 +1,8 @@
 import 'package:api_null_safety/Models/favorite_posts.dart';
-import 'package:api_null_safety/direct_api_fetch.dart';
 
 import 'package:api_null_safety/homepage.dart';
+import 'package:api_null_safety/provider/home_second.dart';
+import 'package:api_null_safety/provider/provider_loading_api.dart';
 import 'package:api_null_safety/provider_logics.dart';
 
 import 'package:flutter/material.dart';
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
             create: (_) => CounterProvider()),
         ChangeNotifierProvider<FavoriteProvider>(
             create: (_) => FavoriteProvider()),
+        ChangeNotifierProvider<DataClass>(create: (_) => DataClass()),
       ],
       child: Builder(
         builder: (BuildContext context) {
@@ -32,7 +34,7 @@ class MyApp extends StatelessWidget {
             theme: ThemeData(
               primarySwatch: Colors.blue,
             ),
-            home: const SecondScreen(),
+            home: const HomeSecond(),
           );
         },
       ),
