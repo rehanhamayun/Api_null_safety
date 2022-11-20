@@ -42,7 +42,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('Api Course'),
+        title: const Text('Api Course'),
       ),
       body: Column(
         children: [
@@ -51,7 +51,7 @@ class _HomePageState extends State<HomePage> {
               future: getPostApi(),
               builder: (context, snapshot) {
                 if (!snapshot.hasData) {
-                  return Text('Loading');
+                  return const Text('Loading');
                 } else {
                   return ListView.builder(
                       itemCount: postLists.length,
@@ -63,26 +63,26 @@ class _HomePageState extends State<HomePage> {
                               mainAxisAlignment: MainAxisAlignment.start,
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
+                                const Text(
                                   'Title',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
                                 Text(postLists[index].title.toString()),
-                                SizedBox(
+                                const SizedBox(
                                   height: 5,
                                 ),
-                                Text(
+                                const Text(
                                   'Description',
                                   style: TextStyle(
                                       fontSize: 15,
                                       fontWeight: FontWeight.bold),
                                 ),
-                                SizedBox(
+                                const SizedBox(
                                   height: 3,
                                 ),
                                 Text(
@@ -95,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                                     favorite.favoriteItemAdd(
                                         postLists[index].title.toString());
                                   },
-                                  child: Text("+"),
+                                  child: const Text("+"),
                                 ),
                               ],
                             ),
@@ -115,7 +115,7 @@ class _HomePageState extends State<HomePage> {
             Expanded(
               child: ListView.builder(
                   itemBuilder: (BuildContext context, int index) {
-                return Text("");
+                return const Text("");
               }),
             )
           ],
